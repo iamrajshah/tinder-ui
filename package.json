@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://github.com/iamrajshah/tinder-ui.git",
+  "homepage": "https://iamrajshah.github.io/tinder-ui",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
