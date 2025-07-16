@@ -7,7 +7,7 @@ import Login from "./Login"
 function App() {
 
   return (
-    <BrowserRouter basename="/tinder-ui">
+    <BrowserRouter basename="/">
       <Routes>
         <Route path="/" element={<Body />}>
           <Route path="/login" element={<Login />} />
