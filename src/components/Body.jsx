@@ -5,7 +5,7 @@ import axios from "axios"
 import {BASE_URL} from './../utils/constants'
 import { useDispatch, useSelector } from "react-redux"
 import {addUser} from './../utils/userSlice'
-import { useState } from "react"
+import { useEffect } from "react"
 function Body() {
     const dispatch = useDispatch();   
     const navigate = useNavigate(); 
@@ -28,11 +28,7 @@ function Body() {
         }
     }
 
-    useState(()=> {
-        
-        console.log(user)
-
-        if (!user)
+    useEffect(()=> {
             fetchUser()
     }, [])
 return (
