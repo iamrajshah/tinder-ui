@@ -9,10 +9,13 @@ function Login() {
 
     const [emailId, setEmailId] = useState('akshay@tinder.com')
     const [password, setPassword] = useState('Akshay@1234')
+    const [error, setError] = useState('')
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handleLogin = async () => {
+      try {
+        
         console.log('login buttoin clicked')
         const result = await axios.post(BASE_URL + '/login', {
             emailId,
@@ -21,6 +24,10 @@ function Login() {
         console.log(result);
         dispatch(addUser(result.data.user))
         navigate('/')
+      } catch (error) {
+        console.log(error)
+        setError(error?.response?.data?.message)
+      }
     }
 return (
     <>
@@ -35,6 +42,7 @@ return (
      <legend className="fieldset-legend">Password</legend>
     <input type="password" className="input" placeholder="Type here" value={password} onChange={(e) => setPassword(e.target.value)}/>
     </fieldset>
+    <p className="text-red-500">{error}</p>
     <div className="card-actions justify-center">
       <button className="btn btn-primary" onClick={() => handleLogin()}>Login</button>
     </div>
