@@ -33,7 +33,9 @@ const Feed = () => {
   if (!feed) return;
 
   if (feed.length === 0)
-    return <h1 className="justify-center m-4">No new user found</h1>;
+    return (
+      <h1 className="text-3xl flex m-60 justify-center">No new user found 🥹</h1>
+    );
 
   console.log(typeof feed);
 

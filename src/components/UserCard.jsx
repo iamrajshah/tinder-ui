@@ -20,7 +20,8 @@ const UserCard = ({ user }) => {
   };
 
   if (!user) return;
-  const { _id, photoUrl, firstName, lastName, age, gender, about } = user;
+  const { _id, photoUrl, firstName, lastName, age, gender, about, isPremium } =
+    user;
 
   return (
     user && (
@@ -29,7 +30,18 @@ const UserCard = ({ user }) => {
           <img src={photoUrl} alt="display" />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">{firstName + " " + lastName}</h2>
+          <div className="flex flex-row">
+            <h2 className="card-title">{firstName + " " + lastName}</h2>
+            {isPremium && (
+              <div className="mx-4">
+                <input
+                  type="checkbox"
+                  checked="checked"
+                  className="checkbox checkbox-info cursor-default"
+                />
+              </div>
+            )}
+          </div>
           {age && gender && <p>{age + ", " + gender}</p>}
           <p>{about}</p>
           <div className="card-actions justify-center my-4">

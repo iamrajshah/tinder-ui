@@ -37,7 +37,9 @@ const NavBar = () => {
       {user && (
         <div className="flex gap-2">
           <div className="dropdown dropdown-end mx-5 flex">
-            <p className="px-4">Welcome {user.firstName}</p>
+            <p className="px-2 pt-2 justify-between">
+              Hey <b> {user.firstName}! </b>
+            </p>
             <div
               tabIndex={0}
               role="button"

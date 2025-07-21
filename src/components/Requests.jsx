@@ -45,7 +45,9 @@ const Requests = () => {
   if (allRequests.length === 0)
     return (
       <div>
-        <h1 className="text-3xl flex m-4 justify-center">No Requests</h1>
+        <h2 className="text-3xl flex m-60 justify-center">
+          No new requests 😅
+        </h2>
       </div>
     );
 

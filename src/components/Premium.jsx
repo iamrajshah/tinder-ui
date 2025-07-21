@@ -59,7 +59,11 @@ const Premium = () => {
   };
 
   return isUserPremium ? (
-    "You're are already a premium user"
+    <div>
+      <h2 className="text-3xl flex m-60 justify-center">
+        You are already a premium user 😍
+      </h2>
+    </div>
   ) : (
     <div className="flex w-full p-6">
       <div className="card bg-base-300 rounded-box grid h-120 grow place-items-center">

@@ -12,6 +12,7 @@ const EditProfile = ({ user }) => {
   const [photoUrl, setPhotoUrl] = useState(user.photoUrl || "");
   const [age, setAge] = useState(user.age || 0);
   const [gender, setGender] = useState(user.gender);
+  const [isPremium, setIsPremium] = useState(user.isPremium);
   const [error, setError] = useState("");
   const [showToast, setShowToast] = useState(false);
 
@@ -118,7 +119,15 @@ const EditProfile = ({ user }) => {
         </div>
 
         <UserCard
-          user={{ photoUrl, firstName, lastName, about, age, gender }}
+          user={{
+            photoUrl,
+            firstName,
+            lastName,
+            about,
+            age,
+            gender,
+            isPremium,
+          }}
         />
       </div>
       {showToast && (
