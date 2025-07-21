@@ -7,7 +7,6 @@ import { addRequests, removeRequest } from "../utils/reqestSlice";
 const Requests = () => {
   const dispatch = useDispatch();
   const allRequests = useSelector((store) => store.requests);
-  console.log(allRequests);
 
   const requestHandler = async (requestId, status) => {
     try {
@@ -56,36 +55,55 @@ const Requests = () => {
       <h1 className="text-bold text-3xl">Requests</h1>
       {allRequests.map((request) => {
         const { _id: requestId } = request;
-        const { _id, firstName, lastName, photoUrl, age, gender, about } =
-          request.fromUserId;
+        const {
+          _id,
+          firstName,
+          lastName,
+          photoUrl,
+          age,
+          gender,
+          about,
+          isPremium,
+        } = request.fromUserId;
         return (
           <div
             key={_id}
-            className="flex justify-between items-center m-4 p-4 rounded-lg w-200 mx-auto bg-gray-300"
+            className="inline-flex  items-center m-4 p-4 rounded-lg w-200 mx-auto bg-gray-300"
           >
-            <div>
-              <img
-                src={photoUrl}
-                alt="display picture"
-                className="w-35 h-35 rounded-full"
-              />
+            <div className="avatar">
+              <div className="w-30 rounded-full">
+                <img src={photoUrl} alt="display picture" />
+              </div>
             </div>
-            <div className="text-left mx-4">
-              <h2 className="font-bold text-xl">
-                {firstName + " " + lastName}
-              </h2>
-              {age && gender && <p>{age + ",  " + gender}</p>}
-              <h3 className="text-sm ">{about}</h3>
+            <div className="flex flex-col text-left mx-4">
+              <div className="flex">
+                <h2 className="font-bold text-xl">
+                  {firstName + " " + lastName}
+                </h2>
+                {isPremium && (
+                  <div className="mx-2">
+                    <input
+                      type="checkbox"
+                      checked="checked"
+                      className="checkbox checkbox-info cursor-default"
+                    />
+                  </div>
+                )}
+              </div>
+              <div className="text-left">
+                {age && gender && <p>{age + ",  " + gender}</p>}
+                <h3 className="mt-3 w-auto text-sm ">{about}</h3>
+              </div>
             </div>
-            <div>
+            <div className="flex flex-row">
               <button
-                className="btn btn-secondary mx-2"
+                className="btn btn-secondary mx-4"
                 onClick={() => requestHandler(requestId, "accepted")}
               >
                 Accept
               </button>
               <button
-                className="btn btn-primary mx-2"
+                className="btn btn-primary "
                 onClick={() => requestHandler(requestId, "rejected")}
               >
                 Reject

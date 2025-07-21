@@ -59,7 +59,7 @@ const Connections = () => {
                   {firstName + " " + lastName}
                 </h2>
                 {isPremium && (
-                  <div>
+                  <div className="mx-2">
                     <input
                       type="checkbox"
                       checked="checked"
