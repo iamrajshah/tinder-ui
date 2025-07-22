@@ -10,7 +10,11 @@ const Chat = () => {
 
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
+  const [chatHeader, setChatHeader] = useState("Chat");
+  const [chatPic, setChatPic] = useState("");
   const user = useSelector((store) => store.user);
+  const allConnectionsData = useSelector((store) => store.connections);
+  console.log(allConnectionsData);
   const userId = user?._id;
   const fetchChat = async () => {
     const allMessages = await axios.get(
@@ -46,6 +50,15 @@ const Chat = () => {
 
   useEffect(() => {
     if (!userId || !targetUserId) return;
+    if (targetUserId && allConnectionsData) {
+      const user = allConnectionsData.find(
+        (connection) => connection._id === targetUserId
+      );
+      if (user) {
+        setChatHeader(user.firstName + " " + user.lastName);
+        setChatPic(user.photoUrl);
+      }
+    }
     const socket = createSocketConnection();
     socket.emit("joinChat", {
       fromUserId: userId,
@@ -65,7 +78,20 @@ const Chat = () => {
   return (
     <>
       <div className="w-3/4 mx-auto border border-gray-600 m-5 h-[70vh] flex flex-col">
-        <h1 className="p-5 border-b border-gray-600">Chat</h1>
+        <div className="flex flex-row p-2 border-b  border-gray-600 ">
+          <div className="flex h-15 w-15 rounded-2xl">
+            <img src={chatPic} />
+          </div>
+          <div className="flex flex-col p-2">
+            <div className="flex">
+              <h1 className="">{chatHeader}</h1>
+            </div>
+            <div className="flex">
+              <span className="status-lg rounded-2xl status-success my-1.5"></span>
+              <h3 className="mx-1">Online</h3>
+            </div>
+          </div>
+        </div>
         <div className="flex-1 overflow-scroll p-5">
           {messages.map((msg, index) => {
             return (

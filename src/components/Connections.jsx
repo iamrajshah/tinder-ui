@@ -47,7 +47,10 @@ const Connections = () => {
           isPremium,
         } = connect;
         return (
-          <div className="inline-flex m-4 p-4 rounded-b-md w-250 mx-auto bg-gray-300">
+          <div
+            key={_id}
+            className="inline-flex m-4 p-4 rounded-b-md w-250 mx-auto bg-gray-300"
+          >
             <div className="avatar">
               <div className="w-30 rounded-full">
                 <img src={photoUrl} alt="display picture" />
@@ -61,6 +64,7 @@ const Connections = () => {
                 {isPremium && (
                   <div className="mx-2">
                     <input
+                      readOnly
                       type="checkbox"
                       checked="checked"
                       className="checkbox checkbox-info cursor-default"

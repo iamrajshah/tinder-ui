@@ -35,6 +35,7 @@ const UserCard = ({ user }) => {
             {isPremium && (
               <div className="mx-4">
                 <input
+                  readOnly
                   type="checkbox"
                   checked="checked"
                   className="checkbox checkbox-info cursor-default"

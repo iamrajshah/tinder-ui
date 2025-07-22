@@ -83,6 +83,7 @@ const Requests = () => {
                 {isPremium && (
                   <div className="mx-2">
                     <input
+                      readOnly
                       type="checkbox"
                       checked="checked"
                       className="checkbox checkbox-info cursor-default"
